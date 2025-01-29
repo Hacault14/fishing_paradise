@@ -1,0 +1,27 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "catches",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userId", "order": "ASCENDING" },
+        { "fieldPath": "timestamp", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "catches",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "catches",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "timestamp", "order": "ASCENDING" }
+      ]
+    }
+  ]
+} 
