@@ -59,8 +59,7 @@ class DefaultFirebaseOptions {
 
   static FirebaseOptions get android => FirebaseOptions(
         apiKey: EnvConfig.firebaseApiKey,
-        appId:
-            '1:574948020824:android:d4c85e5d4f5c2f65b0302d', // This should also be in .env
+        appId: EnvConfig.firebaseAndroidAppId,
         messagingSenderId: EnvConfig.firebaseMessagingSenderId,
         projectId: EnvConfig.firebaseProjectId,
         storageBucket: EnvConfig.firebaseStorageBucket,

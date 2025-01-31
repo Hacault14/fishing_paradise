@@ -5,6 +5,14 @@ plugins {
     id "dev.flutter.flutter-gradle-plugin"
 }
 
+def envFile = new File("${project.rootDir.parentFile}/.env")
+def properties = new Properties()
+if (envFile.exists()) {
+    envFile.withReader('UTF-8') { reader ->
+        properties.load(reader)
+    }
+}
+
 android {
     namespace = "com.example.fishing_paradise"
     compileSdk = flutter.compileSdkVersion
@@ -28,6 +36,15 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        
+        // Enable multidex
+        multiDexEnabled true
+
+        // Read Google Maps API key from .env file and set application name
+        manifestPlaceholders = [
+            GOOGLE_MAPS_API_KEY: properties.getProperty("GOOGLE_MAPS_API_KEY", ""),
+            applicationName: "androidx.multidex.MultiDexApplication"
+        ]
     }
 
     buildTypes {
@@ -41,4 +58,8 @@ android {
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+    implementation "androidx.multidex:multidex:2.0.1"
 }

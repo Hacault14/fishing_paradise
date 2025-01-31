@@ -1,10 +1,11 @@
 import 'package:weather/weather.dart';
+import '../../config/env_config.dart';
 
 class WeatherService {
   final WeatherFactory _weatherFactory;
-  static const String _apiKey = 'YOUR_OPENWEATHERMAP_API_KEY';
 
-  WeatherService() : _weatherFactory = WeatherFactory(_apiKey);
+  WeatherService()
+      : _weatherFactory = WeatherFactory(EnvConfig.openWeatherApiKey);
 
   Future<Map<String, dynamic>> getWeatherData(double lat, double lon) async {
     try {

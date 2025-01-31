@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.fishing_paradise">
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     
     <application
-        android:label="your_app_name"
+        android:label="Fishing Paradise"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         
         <!-- Your API key meta-data -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAzWWZXSOB1AYDmMbej5evk49szgIUVZ1E"/>
+            android:value="${GOOGLE_MAPS_API_KEY}"/>
 
         <activity
             android:name=".MainActivity"

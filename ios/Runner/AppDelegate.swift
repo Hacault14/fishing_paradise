@@ -8,7 +8,24 @@ import GoogleMaps
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
-    GMSServices.provideAPIKey("AIzaSyAzWWZXSOB1AYDmMbej5evk49szgIUVZ1E")
+    let controller = window?.rootViewController as! FlutterViewController
+    let channel = FlutterMethodChannel(name: "com.example.fishingapp/config",
+                                              binaryMessenger: controller.binaryMessenger)
+    
+    channel.setMethodCallHandler({
+      [weak self] (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
+      if call.method == "getGoogleMapsApiKey" {
+        if let apiKey = call.arguments as? String {
+          GMSServices.provideAPIKey(apiKey)
+          result(true)
+        } else {
+          result(FlutterError(code: "INVALID_KEY",
+                            message: "API key not provided",
+                            details: nil))
+        }
+      }
+    })
+    
     GeneratedPluginRegistrant.register(with: self)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
